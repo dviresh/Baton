@@ -316,7 +316,7 @@
                         printf("thread2 sleep time is\n",t2_v);
                         t3_f=clock();
                         t3_v=(float)t3_f-t3_f/CLOCKS_PER_SEC;
-                        printf("thread3 sleep process time is\n",t3_v); 
+                        printf("thread3 sleep time is\n",t3_v); 
                         sleep(t3_v);   
                         }
                         
