@@ -312,11 +312,11 @@
                     void* outputs(void*){
                         while(1){
                         t3_i=clock();
-                        printf("thread1 process time is\n",t1_v);
-                        printf("thread1 process time is\n",t2_v);
+                        printf("thread1 sleep time is\n",t1_v);
+                        printf("thread2 sleep time is\n",t2_v);
                         t3_f=clock();
                         t3_v=(float)t3_f-t3_f/CLOCKS_PER_SEC;
-                        printf("thread1 process time is\n",t3_v); 
+                        printf("thread3 sleep process time is\n",t3_v); 
                         sleep(t3_v);   
                         }
                         
@@ -346,6 +346,7 @@
                         pthread_t thread1;
                         pthread_t thread2;
                         pthread_t thread3;
+                      pthread_mutex_init(&m,NULL);
                     //   pthread_t thread1;
                         int parameter;
                         char *sensor_name;
@@ -407,9 +408,9 @@
                      //       pthread_create(&thread1,NULL,&baro,NULL);
                     //        pthread_detach(thread1);
                         
-                        pthread_create(&thread1,NULL,imuLoop,NULL);
+                        pthread_create(&thread1,NULL,input_i,NULL);
                         pthread_detach(thread1);
-                        pthread_create(&thread2,NULL,inputs,NULL);
+                        pthread_create(&thread2,NULL,imuLoop,NULL);
                         pthread_detach(thread2);
                         pthread_create(&thread3,NULL,outputs,NULL);
                         pthread_detach(thread3);
