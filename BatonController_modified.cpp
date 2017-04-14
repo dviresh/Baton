@@ -35,6 +35,7 @@
 
 #define MS_ZERO_ANGLE_1 1.37
 #define MS_ZERO_ANGLE_2 1.47
+#define MID_PERIOD_VALUE_MS 1500 // value when the controller stick for controlling the actuator is in the center
 
 #define PERIOD_CONTROL_LOOP 1000   // microseconds = 1 ms
 #define PERIOD_INPUT_LOOP   10000  // microseconds = 10 ms
@@ -316,14 +317,14 @@ void* controlThread(void *)
     float		rolld = 180 - roll;
     
     // Kontantin's Controller
-    float		ms_2 = K1 * roll + 1.47 + K3 * gx;
+    float		ms_2 = K1 * roll + MS_ZERO_ANGLE_2 + K3 * gx;
     //up
-    float		ms_1 = K2 * pitch + 1.37 + K3 * gy;
+    float		ms_1 = K2 * pitch + MS_ZERO_ANGLE_1 + K3 * gy;
     //up 
     
     // Controlling with RC    
-    // float	ms_1 = 1.47 + 0.001 * (g_period1 - 1500);
-    //float		ms_2 = 1.37 + 0.001 * (g_period0 - 1500);
+    // float	ms_1 = MS_ZERO_ANGLE_2 + dt * (g_AlphaControlRad - MID_PERIOD_VALUE_MS);
+    //float		ms_2 = MS_ZERO_ANGLE_1 + dt * (g_BetaControlRad - MID_PERIOD_VALUE_MS);
     
        
     // Compute the thrust period from the local variable of the RC controller inputs for thrust
