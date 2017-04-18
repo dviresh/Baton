@@ -345,7 +345,7 @@
 
 	     //float            ms_2 = K1 * roll + MS_ZERO_ANGLE_2 + K3 * gx;
 	    //up
-	    // float            ms_1 = K2 * MS_ZERO_ANGLE_1 + 1.37 + K3 * gy;
+	    // float            ms_1 = K2 * pitch + MS_ZERO_ANGLE_1 + K3 * gy;
 	    //up
 
 	    //**************************************************************************************** -- Controlling with RC -- ****************************************
